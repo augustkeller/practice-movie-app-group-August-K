@@ -37,4 +37,9 @@ public class MovieController {
     public String describe(@RequestParam("title") String title) throws Exception {
         return movieService.generateDescription(title);
     }
+
+    @GetMapping("/filter")
+    public List<Movie> getMoviesByMinRating(@RequestParam(name = "minRating") double minRating) {
+        return repository.getMoviesByMinRating(minRating);
+    }
 }
