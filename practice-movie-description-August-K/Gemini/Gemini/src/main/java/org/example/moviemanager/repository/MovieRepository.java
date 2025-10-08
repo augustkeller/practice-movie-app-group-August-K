@@ -16,7 +16,7 @@ public class MovieRepository {
     }
 
     public List<Movie> getAllMovies() {
-        return movies;
+        return new ArrayList<>(movies);
     }
 
     public List<Movie> getMoviesByMinRating(double minRating) {

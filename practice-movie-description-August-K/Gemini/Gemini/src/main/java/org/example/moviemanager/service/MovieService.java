@@ -58,6 +58,8 @@ public class MovieService {
 
     public Movie createMovie(String title, double rating) {
         String description = generateDescription(title);
-        return new Movie(title, rating, description);
+        String boxOffice = generateBoxOffice(title);
+        String academyAwards = generateAcademyAwards(title);
+        return new Movie(title, rating, description, boxOffice, academyAwards);
     }
 }
