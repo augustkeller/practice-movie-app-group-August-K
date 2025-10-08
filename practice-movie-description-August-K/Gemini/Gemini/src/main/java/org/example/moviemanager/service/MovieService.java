@@ -42,6 +42,20 @@ public class MovieService {
         }
     }
 
+    public String generateAcademyAwards(String title) {
+        try {
+            GenerateContentResponse response = client.models.generateContent(
+                    "gemini-2.0-flash-001",
+                    "Which Oscars did " + title + " win at the Academy Awards?",
+                    null
+            );
+            return response.text();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Academy Awards not available due to an error.";
+        }
+    }
+
     public Movie createMovie(String title, double rating) {
         String description = generateDescription(title);
         return new Movie(title, rating, description);
