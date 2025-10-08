@@ -28,6 +28,20 @@ public class MovieService {
         }
     }
 
+    public String generateBoxOffice(String title) {
+        try {
+            GenerateContentResponse response = client.models.generateContent(
+                    "gemini-2.0-flash-001",
+                    "How much did the movie " + title + " generate at the box office?",
+                    null
+            );
+            return response.text();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Box Office not available due to an error.";
+        }
+    }
+
     public Movie createMovie(String title, double rating) {
         String description = generateDescription(title);
         return new Movie(title, rating, description);

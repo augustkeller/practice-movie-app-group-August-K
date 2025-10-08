@@ -38,6 +38,11 @@ public class MovieController {
         return movieService.generateDescription(title);
     }
 
+    @GetMapping("/boxoffice")
+    public String boxOffice(@RequestParam("title") String title) throws Exception {
+        return movieService.generateBoxOffice(title);
+    }
+
     @GetMapping("/filter")
     public List<Movie> getMoviesByMinRating(@RequestParam(name = "minRating") double minRating) {
         return repository.getMoviesByMinRating(minRating);
